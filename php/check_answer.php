@@ -30,7 +30,7 @@ $correcta = (bool) $stmt-> fetchColumn();
 //Si es correcta augmentem en un 1 la puntuació
 if ($correcta){
     $puntuacio++;
-} 
+}
 
 //Guardem la puntuació si ha sigut correcta y pasem a la següent pregunta
 $_SESSION['puntuacio'] = $puntuacio;

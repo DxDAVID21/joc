@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          pregunta: text, imatge, respostes, correctaIndex: parseInt(correctaIndex) 
+          pregunta: text, imatge, respostes, correctaIndex: Number.parseInt(correctaIndex) 
         })
       });
       const data = await res.json();
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const res = await fetch("php/admin_delete.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({id: parseInt(id) })
+          body: JSON.stringify({id: Number.parseInt(id) })
         });
         const data = await res.json();
         
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imatge = editForm.querySelector('#editImg').value;
     const inputs = editForm.querySelectorAll('.edit-resposta');
     const respostes = Array.from(inputs).map(i => i.value);
-    const correctaIndex = parseInt(editForm.querySelector('#editCorrectaIndex').value);
+    const correctaIndex = Number.parseInt(editForm.querySelector('#editCorrectaIndex').value);
     
     if (!pregunta || respostes.some(r => !r)) {
       alert("Si us plau, omple tots els camps");
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
-          id: parseInt(id), 
+          id: Number.parseInt(id), 
           pregunta, 
           imatge, 
           respostes, 

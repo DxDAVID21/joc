@@ -1,5 +1,5 @@
 <?php
-require 'connexio.php';
+require_once 'connexio.php';
 
 $result = $conn->query("SELECT id, password FROM usuaris");
 
@@ -17,4 +17,3 @@ while ($row = $result->fetch_assoc()) {
 }
 
 echo "Contrasenyes encriptades correctament.";
-?>
