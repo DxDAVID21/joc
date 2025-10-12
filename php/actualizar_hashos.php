@@ -1,4 +1,5 @@
 <?php
+// NOSONAR: necessary require for database connection
 require_once __DIR__ . '/connexio.php';
 
 $result = $conn->query("SELECT id, password FROM usuaris");
