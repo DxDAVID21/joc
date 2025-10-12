@@ -1,5 +1,5 @@
 <?php
-require_once 'connexio.php';
+require_once __DIR__ . '/connexio.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -44,7 +44,7 @@ $siguiente = null;
 if (!$acabado) {
     $stmt = $pdo-> prepare("
         SELECT p.id_pregunta, p.text_pregunta AS pregunta, p.imatge, r.id_resposta AS id, r.text_resposta AS resposta
-        FROM preguntes p 
+        FROM preguntes p
         JOIN respostes r ON p.id_pregunta = r.id_pregunta
         WHERE p.id_pregunta = ?
     ");

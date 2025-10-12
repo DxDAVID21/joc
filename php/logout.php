@@ -1,6 +1,5 @@
 <?php
-
-require_once 'connexio.php';
+require_once __DIR__ . '/connexio.php';
 
 header('Content-Type: application/json');
 

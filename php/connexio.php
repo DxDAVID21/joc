@@ -13,4 +13,3 @@ try {
 }
 
 session_start();
-
