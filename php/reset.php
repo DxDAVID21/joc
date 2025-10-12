@@ -1,5 +1,5 @@
 <?php
-require 'connexio.php';
+require_once 'connexio.php';
 header('Content-Type: application/json');
 
 unset($_SESSION['preguntas']);

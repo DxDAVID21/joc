@@ -1,5 +1,5 @@
 <?php
-require 'connexio.php';
+require_once 'connexio.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -28,7 +28,9 @@ $stmt ->execute([$respostaUsuari, $pregunta_id]);
 $correcta = (bool) $stmt-> fetchColumn();
 
 //Si es correcta augmentem en un 1 la puntuació
-if ($correcta) $puntuacio++;
+if ($correcta){
+    $puntuacio++;
+} 
 
 //Guardem la puntuació si ha sigut correcta y pasem a la següent pregunta
 $_SESSION['puntuacio'] = $puntuacio;

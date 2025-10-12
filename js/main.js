@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const imatgeImg = document.getElementById('imatge');
   const puntuacioSpan = document.getElementById('puntuacio');
 
-  // Todo lo que tenga que ver con el admin
-  // Tanto como el inicio de sesion como con el CRUD que ya esta hecho en el html
   // logout del admin
   document.getElementById("btnLogout").addEventListener("click", async () => {
     try {
@@ -73,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("loginError").innerText = "Credencials incorrectes";
       }
     } catch (e) {
+      console.error("Error en login:", e);
       document.getElementById("loginError").innerText = "Error al fer login";
     }
   });

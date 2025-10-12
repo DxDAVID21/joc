@@ -1,6 +1,6 @@
 <?php
 
-require 'connexio.php';
+require_once 'connexio.php';
 
 header('Content-Type: application/json');
 
@@ -11,4 +11,3 @@ session_destroy();
 // Devolver una respuesta JSON válida
 echo json_encode(['success' => true, 'message' => 'Sessió tancada correctament']);
 exit;
-?>

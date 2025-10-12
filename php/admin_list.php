@@ -1,5 +1,5 @@
 <?php
-require 'connexio.php';
+require_once 'connexio.php';
 header('Content-Type: application/json; charset=utf-8');
 
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
@@ -36,4 +36,3 @@ foreach ($rows as $row) {
 $_SESSION['preguntes_cache'] = array_values($preguntes);
 
 echo json_encode(array_values($preguntes));
-?>
