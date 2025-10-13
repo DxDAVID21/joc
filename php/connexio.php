@@ -1,5 +1,6 @@
 <?php
-// Conexió amb variables d'entorn (passen des de docker-compose.yaml)
+// Conexió amb variables d'entorn (passen des de .env)
+array_map(fn($line) => putenv(trim($line)), file(__DIR__.'/.env'));
 $host = getenv("DB_HOST");
 $db   = getenv("DB_NAME");
 $user = getenv("DB_USER");
