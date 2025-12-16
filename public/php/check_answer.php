@@ -1,5 +1,6 @@
 <?php
-require 'connexio.php';
+// NOSONAR: necessary require for database connection
+require_once __DIR__ . '/connexio.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -28,7 +29,9 @@ $stmt ->execute([$respostaUsuari, $pregunta_id]);
 $correcta = (bool) $stmt-> fetchColumn();
 
 //Si es correcta augmentem en un 1 la puntuació
-if ($correcta) $puntuacio++;
+if ($correcta){
+    $puntuacio++;
+}
 
 //Guardem la puntuació si ha sigut correcta y pasem a la següent pregunta
 $_SESSION['puntuacio'] = $puntuacio;
@@ -42,7 +45,7 @@ $siguiente = null;
 if (!$acabado) {
     $stmt = $pdo-> prepare("
         SELECT p.id_pregunta, p.text_pregunta AS pregunta, p.imatge, r.id_resposta AS id, r.text_resposta AS resposta
-        FROM preguntes p 
+        FROM preguntes p
         JOIN respostes r ON p.id_pregunta = r.id_pregunta
         WHERE p.id_pregunta = ?
     ");

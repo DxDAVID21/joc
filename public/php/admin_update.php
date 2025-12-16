@@ -1,5 +1,7 @@
 <?php
-require 'connexio.php';
+// NOSONAR: necessary require for database connection
+require_once __DIR__ . '/connexio.php';
+
 header('Content-Type: application/json; charset=utf-8');
 
 // Solo admin puede usarlo
