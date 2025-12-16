@@ -31,7 +31,6 @@ Permet als usuaris ampliar els seus coneixements geogràfics i culturals d’una
    ```bash
    git clone https://github.com/DXDAVID21/joc.git
 
-
 ---
 
 ## 👨‍💻 Autor

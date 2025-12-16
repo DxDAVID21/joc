@@ -18,8 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const imatgeImg = document.getElementById("imatge");
   const puntuacioSpan = document.getElementById("puntuacio");
 
-  // Todo lo que tenga que ver con el admin
-  // Tanto como el inicio de sesion como con el CRUD que ya esta hecho en el html
   const btnLogin = document.getElementById("btnLogin");
 
   btnLogin.addEventListener("click", async () => {
@@ -46,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e;
     }
   });
-  //  const carrgar = document.getElementById('btnLoad');
+
   // ---- ADMIN CRUD ----
   const btnLoad = document.getElementById("btnLoad");
   const llistaPreguntesDiv = document.getElementById("llistaPreguntes");
@@ -128,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (e.target.classList.contains("btnEditar")) {
       const id = e.target.dataset.id;
-      // Traer una pregunta (puedes usar admin_list.php?id=ID o un admin_get.php si prefieres)
       const pregunta = await (
         await fetch("php/admin_list.php?id=" + id)
       ).json();
