@@ -21,19 +21,17 @@ foreach ($rows as $row) {
     $id = $row['id_pregunta'];
     if (!isset($preguntes[$id])) {
         $preguntes[$id] = [
-            'id_pregunta' => $id,
-            'text_pregunta' => $row['text_pregunta'],
+            'id' => $id,
+            'pregunta' => $row['text_pregunta'],
             'imatge' => $row['imatge'],
             'respostes' => []
         ];
     }
     $preguntes[$id]['respostes'][] = [
-        'id_resposta' => $row['id_resposta'],
-        'text_resposta' => $row['text_resposta'],
+        'id' => $row['id_resposta'],
+        'resposta' => $row['text_resposta'],
         'correcta' => (bool)$row['correcta']
     ];
 }
-$_SESSION['preguntes_cache'] = array_values($preguntes);
 
 echo json_encode(array_values($preguntes));
-?>

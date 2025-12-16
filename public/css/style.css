@@ -1,0 +1,18 @@
+body { 
+    font-family: sans-serif; 
+    max-width: 600px; 
+    margin: 30px auto; 
+}
+
+img { 
+    max-width: 300px; 
+    display: block; 
+    margin-bottom: 15px; 
+}
+
+button { 
+    padding: 10px 20px; 
+    margin: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+}

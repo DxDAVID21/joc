@@ -1,0 +1,25 @@
+{
+  "name": "joc",
+  "version": "1.0.0",
+  "description": "Quiz about flag of countries",
+  "main": "public/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DxDAVID21/joc.git"
+  },
+  "keywords": [],
+  "author": "David Quispe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DxDAVID21/joc/issues"
+  },
+  "homepage": "https://github.com/DxDAVID21/joc#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.37.0",
+    "eslint": "^9.37.0",
+    "globals": "^16.4.0"
+  }
+}

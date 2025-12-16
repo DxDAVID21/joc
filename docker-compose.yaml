@@ -1,0 +1,39 @@
+services:
+  web:
+    build:
+      context: ./public/images
+      dockerfile: DockerFile
+    image: php-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public:/var/www/html
+      - ./php:/var/www/html/php
+      - ./js:/var/www/html/js
+      - ./css:/var/www/html/css
+    environment:
+      - DB_HOST=db
+      - DB_NAME=banderes_quiz
+      - DB_USER=usuari
+      - DB_PASS=paraula_de_pas
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: banderes_quiz
+      MYSQL_USER: usuari
+      MYSQL_PASSWORD: paraula_de_pas
+      LANG: C.UTF-8
+    volumes:
+      - ./public/db_data:/var/lib/mysql
+      - ./public/db_init:/docker-entrypoint-initdb.d
+
+  adminer:
+    image: adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
