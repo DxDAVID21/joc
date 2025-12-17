@@ -1,6 +1,5 @@
 <?php
-// NOSONAR: necessary require for database connection
-require_once __DIR__ . '/connexio.php';
+use __DIR__ . '/connexio.php';
 
 header('Content-Type: application/json; charset=utf-8');
 

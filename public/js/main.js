@@ -40,8 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Credencials incorrectes";
       }
     } catch (e) {
-      (document.getElementById("loginError").innerText = "Error al fer login"),
-        e;
+      (document.getElementById("loginError").innerText = "Error al fer login", e);
     }
   });
 
@@ -76,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         llistaPreguntesDiv.appendChild(div);
       });
     } catch (e) {
-      (llistaPreguntesDiv.innerText = "Error carregant preguntes."), e;
+      (llistaPreguntesDiv.innerText = "Error carregant preguntes.", e);
     }
   });
 
