@@ -8,9 +8,6 @@ services:
       - "8080:80"
     volumes:
       - ./public:/var/www/html
-      - ./php:/var/www/html/php
-      - ./js:/var/www/html/js
-      - ./css:/var/www/html/css
     environment:
       - DB_HOST=db
       - DB_NAME=banderes_quiz

@@ -1,5 +1,5 @@
 <?php
-use __DIR__ . '/connexio.php';
+require_once __DIR__ . '/connexio.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
 
 $data = json_decode(file_get_contents("php://input"), true);
 if (!$data) {
-    echo json_encode(['error' => 'Dades invàlides']);
+    echo json_encode(['error' => 'Dades invàlides']);   
     exit;
 }
 

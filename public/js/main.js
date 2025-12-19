@@ -139,34 +139,34 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Guardar edición
-  document.getElementById("btnUpdate").addEventListener("click", async () => {
-    const id = document.getElementById("editId").value;
-    const text = document.getElementById("editPreguta").value;
-    const imatge = document.getElementById("editImg").value;
-    const inputs = document.querySelectorAll("#editRespostes input");
-    const respostes = Array.from(inputs).map((i) => i.value);
-    const correcta = document.getElementById("editCorrectaIndex").value;
+  // document.getElementById("btnUpdate").addEventListener("click", async () => {
+  //   const id = document.getElementById("editId").value;
+  //   const text = document.getElementById("editPreguta").value;
+  //   const imatge = document.getElementById("editImg").value;
+  //   const inputs = document.querySelectorAll("#editRespostes input");
+  //   const respostes = Array.from(inputs).map((i) => i.value);
+  //   const correcta = document.getElementById("editCorrectaIndex").value;
 
-    try {
-      const res = await fetch("php/admin_update.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, text, imatge, respostes, correcta }),
-      });
-      const data = await res.json();
-      alert(data.message || "Pregunta actualitzada!");
-      document.getElementById("editForm").style.display = "none";
-      btnLoad.click();
-    } catch (e) {
-      alert("Error actualitzant");
-      console.log("ERROR:", e);
-    }
-  });
+  //   try {
+  //     const res = await fetch("php/admin_update.php", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ id, text, imatge, respostes, correcta }),
+  //     });
+  //     const data = await res.json();
+  //     alert(data.message || "Pregunta actualitzada!");
+  //     document.getElementById("editForm").style.display = "none";
+  //     btnLoad.click();
+  //   } catch (e) {
+  //     alert("Error actualitzant");
+  //     console.log("ERROR:", e);
+  //   }
+  // });
 
-  document.getElementById("btnCancelarEdit").addEventListener("click", () => {
-    document.getElementById("editForm").style.display = "none";
-  });
-
+  
+// document.getElementById("btnCancelarEdit").addEventListener("click", () => {
+//     document.getElementById("editForm").style.display = "none";
+//   });
   let tempsTotal = 30;
   let intervalID = null;
   let puntuacioActual = 0;
@@ -238,9 +238,10 @@ document.addEventListener("DOMContentLoaded", () => {
         mostrarPregunta(data);
         if (!intervalID) iniciarTemporizador();
       })
-      .catch(() => {
+      .catch((e) => {
         resultatDiv.textContent = "Error carregant la pregunta.";
         container.innerHTML = "";
+        console.log(e);
       });
   }
 
