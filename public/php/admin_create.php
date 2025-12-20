@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/connexio.php';
+require_oncex __DIR__ . '/connexio.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
