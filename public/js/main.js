@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const imatgeImg = document.getElementById('imatge');
   const puntuacioSpan = document.getElementById('puntuacio');
 
-  // Todo lo que tenga que ver con el admin
-  // Tanto como el inicio de sesion como con el CRUD que ya esta hecho en el html
   // logout del admin
   document.getElementById("btnLogout").addEventListener("click", async () => {
     try {
@@ -98,16 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             div.innerHTML = `
               <div class="card-body">
-                <h5 class="card-title">${p.text_pregunta} <small class="text-muted">(ID: ${p.id_pregunta})</small></h5>
+                <h5 class="card-title">${p.pregunta} <small class="text-muted">(ID: ${p.id})</small></h5>
                 ${p.imatge ? `<img src="${p.imatge}" class="img-fluid rounded mb-2" style="max-height: 100px;">` : ""}
                 <ul class="list-group list-group-flush mb-3">
                     ${p.respostes.map((r,i) => 
                         `<li class="list-group-item ${r.correcta ? 'list-group-item-success fw-bold' : ''}">
-                        ${i+1}. ${r.text_resposta} ${r.correcta ? "✅" : ""}</li>`
+                        ${i+1}. ${r.resposta} ${r.correcta ? "✅" : ""}</li>`
                     ).join("")}
                 </ul>
-                <button class="btn btn-warning btn-sm btnEditar" data-id="${p.id_pregunta}">Editar</button>
-                <button class="btn btn-danger btn-sm btnEliminar" data-id="${p.id_pregunta}">Eliminar</button>
+                <button class="btn btn-warning btn-sm btnEditar" data-id="${p.id}">Editar</button>
+                <button class="btn btn-danger btn-sm btnEliminar" data-id="${p.id}">Eliminar</button>
                 <hr>
                 </div>
                 
@@ -190,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dentro del evento click de llistaPreguntesDiv
     if (e.target.classList.contains("btnEditar")) {
-      const pregunta = preguntas.find(p => p.id_pregunta == id);
+      const pregunta = preguntas.find(p => p.id == id);
       if (!pregunta) {
         alert("No s'ha trobat la pregunta");
         return;
@@ -209,15 +207,15 @@ document.addEventListener('DOMContentLoaded', () => {
       editForm.innerHTML = `
         <div class="card-header bg-primary text-white">
           <h5 class="card-title mb-0">
-            <i class="bi bi-pencil-square"></i>Editant Pregunta #${pregunta.id_pregunta}
+            <i class="bi bi-pencil-square"></i>Editant Pregunta #${pregunta.pregunta}
           </h5>
         </div>
 
         <div class="card-body">
-          <input type="hidden" id="editId" value="${pregunta.id_pregunta}">
+          <input type="hidden" id="editId" value="${pregunta.id}">
           <div class="mb-3">
             <label for="editPregunta" class="form-label fw-bold">Pregunta:</label>
-            <input type="text" id="editPregunta" class="form-control form-control-lg" value="${pregunta.text_pregunta}" placeholder="Text de la pregunta">
+            <input type="text" id="editPregunta" class="form-control form-control-lg" value="${pregunta.pregunta}" placeholder="Text de la pregunta">
           </div>
 
           <div class="mb-3">
@@ -231,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="col-md-6">
                   <div class="input-group">
                     <span class="input-group-text">${i + 1}</span>
-                    <input type="text" value="${r.text_resposta}"
+                    <input type="text" value="${r.resposta}"
                       class="form-control edit-resposta" 
                       placeholder="Resposta ${i + 1}"> 
                     <span class="input-group-text">
@@ -247,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <label for="editCorrectaIndex" class="form-label fw-bold">Resposta Correcta:</label>
             <select id="editCorrectaIndex" class="form-select">
               ${pregunta.respostes.map((r, i) => `
-                <option value="${i}" ${r.correcta ? 'selected' : ''}>Opció ${i + 1}: ${r.text_resposta.substring(0,20)}...</option>
+                <option value="${i}" ${r.correcta ? 'selected' : ''}>Opció ${i + 1}: ${r.resposta.substring(0,20)}...</option>
               `).join('')}
             </select>
           </div>
@@ -268,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Event listeners para los nuevos botones
       editForm.querySelector('#btnUpdate').addEventListener('click', async () => {
-        await guardarEdicion(pregunta.id_pregunta);
+        await guardarEdicion(pregunta.id);
       });
       
       editForm.querySelector('#btnCancelEdit').addEventListener('click', () => {
@@ -286,8 +284,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const imatge = editForm.querySelector('#editImg').value;
     const inputs = editForm.querySelectorAll('.edit-resposta');
     const respostes = Array.from(inputs).map(i => i.value);
-    const correctaIndex = parseInt(editForm.querySelector('#editCorrectaIndex').value);
-    
+    const correctaIndex = parseInt(editForm.querySelector('#editCorrectaIndex').value);     
+
     if (!pregunta || respostes.some(r => !r)) {
       alert("Si us plau, omple tots els camps");
       return;
@@ -307,6 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
       const data = await res.json();
+      console.log("Respuesta admin_update:", data);
       if (data.success) {
         alert("Pregunta actualitzada correctament!");
         editForm.remove();

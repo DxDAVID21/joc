@@ -42,5 +42,8 @@ try {
     echo json_encode(['success' => true]);
 } catch (Exception $e) {
     $pdo->rollBack();
-    echo json_encode(['error' => $e->getMessage()]);
+    echo json_encode([
+        'success' => false,
+        'error' => $e->getMessage()
+    ]);
 }
