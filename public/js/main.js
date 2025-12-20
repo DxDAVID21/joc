@@ -19,38 +19,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const puntuacioSpan = document.getElementById('puntuacio');
 
   // logout del admin
-  document.getElementById("btnLogout").addEventListener("click", async () => {
+  const btnLogout = document.getElementById("btnLogout");
+
+  btnLogout.addEventListener("click", async () => {
     try {
-        const res = await fetch("php/logout.php", {
-            method: "POST"
-        });
-        
-        const data = await res.json();
-        if (data.success) {
-            adminDiv.style.display = "none";
-            menuDiv.style.display = "block";
-            
-            // Limpiar formulario de edición
-            const editForm = document.querySelector('.edit-form-container');
-            if (editForm) editForm.remove();
-            
-            // LIMPIAR INPUTS DE LOGIN DIRECTAMENTE (sin formulario)
-            document.getElementById("email").value = "";
-            document.getElementById("password").value = "";
-            document.getElementById("loginError").textContent = "";
-        }
+      await fetch("php/logout.php", { method: "POST" });
+
+      // Ocultar admin y volver al menú
+      adminDiv.style.display = "none";
+      menuDiv.style.display = "block";
+
+      // Limpiar posibles formularios de edición
+      const editForm = document.querySelector('.edit-form-container');
+      if (editForm) editForm.remove();
+
+      // Limpiar errores/login
+      const loginError = document.getElementById("loginError");
+      if (loginError) loginError.textContent = "";
+
     } catch (e) {
-        console.error("Error en logout:", e);
-        adminDiv.style.display = "none";
-        menuDiv.style.display = "block";
-        
-        // Limpiar inputs en caso de error también
-        document.getElementById("email").value = "";
-        document.getElementById("password").value = "";
-        document.getElementById("loginError").textContent = "";
+      console.error("Error en logout:", e);
+
+      // Aunque falle el fetch, salimos igual
+      adminDiv.style.display = "none";
+      menuDiv.style.display = "block";
     }
   });
-
+  
   const btnLogin = document.getElementById("btnLogin");
   btnLogin.addEventListener("click", async () => {
     const email = document.getElementById("email").value;
