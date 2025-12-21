@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- BOOSTRAP EMOJIS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body class="bg-light">
+  <!-- MENÚ INICIAL -->
+  <div id="menu" class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-body text-center p-5">
+            <h1 class="card-title mb-4">Benvingut al Quiz</h1>
+            <button id="btnPlay" class="btn btn-primary btn-lg w-100 mb-3">Jugar</button>
+            <button id="btnShowLogin" class="btn btn-outline-primary btn-lg w-100">Login Admin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN ADMIN -->
+  <div id="login" class="container mt-5" style="display:none;">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-body p-5">
+            <h2 class="card-title text-center mb-4">Login Admin</h2>
+            <div class="mb-3">
+              <input type="email" id="email" class="form-control form-control-lg" placeholder="Email">
+            </div>
+            <div class="mb-3">
+              <input type="password" id="password" class="form-control form-control-lg" placeholder="Contrasenya">
+            </div>
+            <button id="btnLogin" class="btn btn-primary btn-lg w-100 mb-3">Entrar</button>
+            <p id="loginError" class="text-danger text-center"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOC -->
+  <div id="game" class="container mt-4" style="display:none;">
+    <div class="card shadow">
+      <div class="card-body text-center">
+        <h2 id="pregunta" class="card-title mb-4" aria-live="polite">
+          <span class="sonarCloud">Pregunta actual</span>
+        </h2>
+        <img id="imatge" alt="Bandera del país" class="img-fluid rounded mb-4" style="max-height: 200px;">
+        <div id="respostes" class="row g-3 mb-4"></div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <p id="contador" class="mb-0 fw-bold"></p>
+          <p id="temps-restant" class="mb-0 fw-bold text-warning"></p>
+        </div>
+        <p class="fw-bold d-none">Puntuació: <span id="puntuacio" class="text-success">0</span></p>
+        <div id="resultat" class="alert alert-info mb-3"></div>
+        <br>
+        <button id="btnBackMenu" class="btn btn-secondary">Tornar al menú</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN -->
+  <div id="admin" class="container mt-4" style="display:none;">
+    <div class="card shadow">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="card-title mb-0">Panell d'Administració</h2>
+          <button id="btnLogout" class="btn btn-danger">Tancar sesió</button>
+        </div>
+        
+        <button id="btnLoad" class="btn btn-success mb-4">Carregar preguntes</button>
+        <div id="llistaPreguntes" class="mb-4"></div>
+
+        <hr>
+
+        <div class="card bg-light">
+          <div class="card-body">
+            <h3 class="card-title">Nova Pregunta</h3>
+            <div class="mb-3">
+              <input type="text" id="novaPregunta" class="form-control" placeholder="Text de la pregunta">
+            </div>
+            <div class="mb-3">
+              <input type="text" id="novaImg" class="form-control" placeholder="URL de la imatge">
+            </div>
+            <div id="novaRespostes" class="mb-3">
+              <input type="text" class="form-control mb-2" placeholder="Resposta 1">
+              <input type="text" class="form-control mb-2" placeholder="Resposta 2">
+              <input type="text" class="form-control mb-2" placeholder="Resposta 3">
+              <input type="text" class="form-control mb-2" placeholder="Resposta 4">
+            </div>
+            <div class="mb-3">
+              <select id="correctaIndex" class="form-select">
+                <option value="0">Correcta: 1</option>
+                <option value="1">Correcta: 2</option>
+                <option value="2">Correcta: 3</option>
+                <option value="3">Correcta: 4</option>
+              </select>
+            </div>
+            <button id="btnAfegir" class="btn btn-success">Afegir</button>
+          </div>
+        </div>
+        <button id="btnBackMenu2" class="btn btn-secondary mt-4">Tornar al menú</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
