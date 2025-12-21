@@ -1,2 +1,6 @@
 /node_modules
 public/db_data
+
+# Variables de producció
+*.env
+public/php/.env
